@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
+<meta charset="UTF-8">
+<link href="https://fonts.cdnfonts.com/css/kawtar" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
+
+<title>Mis 15 Años</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background:url("img/invitacion2.png") center/cover no-repeat fixed;
+    font-family:'Playfair Display', serif;
+    overflow:hidden;
+}
+
+/* capa general uniforme */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(2px);
+    z-index:-1;
+}
+
+.app{max-width:420px;margin:auto;height:100vh;position:relative;}
+
+audio{display:none;}
+
+.sobre{
+    position:absolute;inset:0;
+    background:url("img/sobre3.png") center/cover no-repeat;
+    display:flex;justify-content:center;align-items:flex-end;
+    padding-bottom:12%;cursor:pointer;z-index:10;
+}
+
+.sobre::after{
+    content:"";position:absolute;inset:0;
+    background:url("img/sobre4.png") center/cover no-repeat;
+    opacity:0;transition:opacity 1.4s;
+}
+
+.sobre.abierto::after{opacity:1;}
+.sobre.fade{opacity:0;transition:1s;pointer-events:none;}
+
+.inv{display:none;height:100vh;overflow-y:auto;}
+
+.section{
+    padding:40px 25px;
+    text-align:center;
+    position:relative;
+}
+
+.section::before{
+    content:"";position:absolute;inset:0;
+    background:url("img/invitacion2.png") center/cover no-repeat;
+    animation:zoom 22s infinite;z-index:-2;
+}
+
+/* quitamos capa individual para que no se corte el fondo */
+.section::after{display:none;}
+
+@keyframes zoom{
+    0%{transform:scale(1);} 
+    50%{transform:scale(1.08);} 
+    100%{transform:scale(1);} 
+}
+
+.titulo-img{
+    width:100%;
+    max-width:300px;
+    display:block;
+    margin:auto;
+    mix-blend-mode:multiply;
+}
+.nombre{font-family:'Great Vibes';font-size:38px;color:#4a78b8;}
+.nombre{
+    margin-top:40px;
+}
+.texto{font-size:14px;color:#555;margin-top:10px;}
+.fecha-evento{
+    font-family:'Great Vibes', cursive;
+    font-size:28px;
+    color:#4a78b8;
+    margin-top:25px;
+    line-height:1.2;
+}
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 22px;
+    border-radius:25px;
+    background:#124b9b;
+    color:#fff;
+    text-decoration:none;
+}
+
+.contador{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.bloque{
+    background:#ffffffcc;
+    padding:10px;
+    border-radius:10px;
+    min-width:60px;
+}
+
+.numero{font-size:20px;font-weight:bold;}
+.animar{animation:flip .5s;}
+
+@keyframes flip{
+    0%{transform:rotateX(90deg);opacity:0;} 
+    100%{transform:rotateX(0);opacity:1;} 
+}
+
+.label{font-size:10px;}
+
+/* DRESS CODE */
+.dress-title{
+    font-size:15px;
+    color:#09326c;
+    border-bottom:2.3px solid #aeaeae;
+    margin-bottom:15px;
+    font-family:'The Seasons', serif;
+}
+
+.dress-container{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:20px;
+}
+
+.dress-item{
+    text-align:center;
+}
+
+.divisor{
+    width:2px;
+    height:80px;
+    background:#c9b36b;
+}
+
+.dress-img{
+    width:70px;
+    margin-bottom:10px;
+}
+
+.todos{
+    margin-top:30px;
+}
+
+.regalo-img{
+    width:70px;
+    margin-top:10px;
+}
+
+.mensaje-final{
+    margin-top:30px;
+    font-size:24px;
+    color:#c9b36b;
+    font-family:'The Seasons', serif;
+}
+
+/* CONFIRMACION EXTRA */
+.confirm-extra{
+    margin-top:30px;
+}
+
+.confirm-title{
+    font-family:'Great Vibes', cursive;
+    font-size:30px;
+    color:#333;
+    margin-bottom:12px;
+}
+
+.ticket-img{
+    width:70px;
+    margin:12px 0;
+}
+
+.confirm-text{
+    font-size:20px;
+    color:#555;
+}
+.titulo-recepcion{
+    font-family:'the seasons', cursive; /* estilo elegante */
+    font-size:28px;
+    color:#4a78b8;
+    margin-bottom:20px;
+    border-bottom:2px solid #2f5f9f;
+    text-align:center;
+    letter-spacing:1px;
+}
+/* CONTENEDOR GENERAL */
+.contenedor-madrinas{
+    text-align:center;
+    margin-top:20px;
+}
+
+/* TITULO CON LINEA ELEGANTE */
+.titulo-madrinas{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    color:#2f5f9f;
+    display:inline-block;
+    border-bottom:2px solid #2f5f9f;
+    padding-bottom:6px;
+    margin-bottom:20px;
+}
+
+/* IMAGEN */
+.madrinas-img img{
+     width:100%;
+    max-width:250px;
+    display:block;
+    margin:auto;
+    mix-blend-mode:multiply;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="musica" loop>
+<source src="audio/audio2.mp3" type="audio/mpeg">
+</audio>
+
+<div class="app">
+
+<div class="sobre" id="abrir">
+<span style="color:#555">Presiona para abrir</span>
+</div>
+
+<div class="inv" id="inv">
+
+<div class="section">
+<div class="titulo">
+<img src="img/mis 15.png" class="titulo-img">
+</div>
+<div class="nombre">Dayana Georley Murrugarra Capristan </div>
+
+<div class="texto">
+<br>
+
+Con la bendición de Dios y el amor de mi familia,
+
+hoy celebro la alegría de una vida que brilla.
+
+Te invito a compartir este día tan especial,
+
+un sueño que comienza y que no tendrá igual.
+
+Como mariposa que emprende su vuelo,
+
+te espero con ansias bajo este cielo;
+
+ven a brindar conmigo, con mucha emoción,
+
+y guardemos esta fiesta en el corazón.
+</div>
+
+<div class="fecha-evento">
+Domingo 5 de abril  a las 6:30 PM
+</div>
+
+
+<div class="contador" id="contador"></div>
+
+<!-- CALENDARIO IMAGEN -->
+<div style="margin-top:25px;">
+<img src="img/calendario.png" style="width:100%;max-width:260px;">
+</div>
+
+</div>
+
+<!-- RECEPCIÓN -->
+<div class="section">
+<div class="titulo-recepcion">RECEPCIÓN</div>
+<div class="texto">“La recepción se llevará a cabo en el local Kajachos, ubicado en Av. La Paz 932, Cajamarca, a partir de las 6:30 p.m.”</div>
+<a href="https://maps.app.goo.gl/kYBHMbuaz2k2o5un9" target="_blank" class="btn">Ver ubicación</a>
+</div>
+
+<!-- MADRINAS -->
+<div class="contenedor-madrinas">
+
+    <div class="titulo-madrinas">Mi Madrina</div>
+
+    <div class="madrinas-img">
+        <img src="img/madrinas.png">
+    </div>
+
+</div>
+
+<!-- CONFIRMAR -->
+<div class="section">
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScQg7-Z2iYz06UICBnPlQM9F3Gu2ZATWb-3SdxT7Mi7KX8CxA/viewform?usp=publish-editor"
+target="_blank" class="btn">📩 Confirma tu asistencia</a>
+
+<!-- EXTRA CONFIRMACION -->
+<div class="confirm-extra">
+<div class="confirm-title">¡Confirma tu Asistencia!</div>
+<img src="img/ticket.png" class="ticket-img">
+
+
+<!-- DRESS CODE -->
+<div class="section">
+<div class="dress-title">CODIGO DE VESTIMENTA </div>
+
+<div class="dress-container">
+<div class="dress-item">
+<img src="img/ellos.png" class="dress-img">
+<div><b>ELLOS</b></div>
+<div>Traje formal</div>
+</div>
+
+<div class="divisor"></div>
+
+<div class="dress-item">
+<img src="img/ellas.png" class="dress-img">
+<div><b>ELLAS</b></div>
+<div>Vestido</div>
+</div>
+</div>
+
+<div class="todos">
+<div><b>TODOS</b></div>
+<img src="img/regalo.png" class="regalo-img">
+</div>
+
+<div class="mensaje-final">
+TE ESPERO NO FALTES !
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const btn=document.getElementById("abrir");
+const inv=document.getElementById("inv");
+const audio=document.getElementById("musica");
+
+btn.onclick=()=>{
+    audio.play();
+    btn.classList.add("abierto");
+
+    setTimeout(()=>{btn.classList.add("fade");},1200);
+    setTimeout(()=>{
+        inv.style.display="block";
+        document.body.style.overflow="auto";
+    },1500);
+};
+
+const destino=new Date("2026-04-05T18:30:00").getTime();
+const cont=document.getElementById("contador");
+
+let prev={};
+
+setInterval(()=>{
+const ahora=new Date().getTime();
+const diff=destino-ahora;
+
+const d=Math.floor(diff/(1000*60*60*24));
+const h=Math.floor((diff/(1000*60*60))%24);
+const m=Math.floor((diff/(1000*60))%60);
+const s=Math.floor((diff/1000)%60);
+
+function bloque(v,l,k){
+let c="numero";
+if(prev[k]!==v)c+=" animar";
+return `<div class="bloque"><div class="${c}">${v}</div><div class="label">${l}</div></div>`;
+}
+
+cont.innerHTML=
+bloque(d,"Días","d")+
+bloque(h,"Horas","h")+
+bloque(m,"Min","m")+
+bloque(s,"Seg","s");
+
+prev={d,h,m,s};
+
+},1000);
+
+</script>
+
+</body>
+</html>
